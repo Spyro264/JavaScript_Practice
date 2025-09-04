@@ -1,20 +1,26 @@
 console.log("start");
 
-async function baz() {
-  console.log("baz start");
-  await Promise.resolve().then(() => console.log("promise inside await"));
-  console.log("baz after await");
+async function Hello() {
+  console.log("one");
+  await Promise.resolve("hi").then((res) => {
+    console.log(res);
+  });
+
+  await new Promise((resolve) => {
+    console.log("im inside");
+    resolve();
+  });
+
+  console.log("100");
 }
 
-baz();
-
-Promise.resolve().then(() => console.log("promise 1"));
+Hello();
 
 console.log("end");
 
 // start
-// baz start
+// one
 // end
-// promise inside await
-// promise 1
-// baz after await
+// hi
+// im inside
+// 100
