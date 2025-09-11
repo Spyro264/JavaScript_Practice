@@ -1,17 +1,19 @@
-const keys = ["name", "age", "country"];
-const values = ["Alice", 25, "USA"];
+const people = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 30 },
+  { name: "Charlie", age: 25 },
+  { name: "David", age: 30 },
+];
 
-const createObject = (keys, vlaues) => {
-  const person = new Object();
-  keys.map((item, index) => {
-    person[item] = vlaues[index];
+const groupByAge = (people) => {
+  const group = {};
+  people.map((item) => {
+    if (!group[item.age]) {
+      group[item.age] = [];
+    }
+    group[item.age].push(item);
   });
-
-  return person;
+  return group;
 };
 
-const user = createObject(keys, values);
-console.log({ user });
-
-// const { A: x, B: y } = { A: 1 };
-// console.log(x, y);
+console.log(groupByAge(people));

@@ -417,3 +417,70 @@ SuperCar.drive();
 SuperCar.charge();
 
 ```
+
+# Question 10
+
+You need to create an object dynamically based on user input, where the property names come from an array. Write a function that takes an array of strings and an array of corresponding values and creates an object.
+
+## Approach 1
+
+```
+const keys = ["name", "age", "country"];
+const values = ["Alice", 25, "USA"];
+
+const createObject = (keys, vlaues) => {
+  const person = new Object();
+  keys.map((item, index) => {
+    person[item] = vlaues[index];
+  });
+
+  return person;
+};
+
+const user = createObject(keys, values);
+console.log({ user });
+
+```
+
+## Approach 2
+
+```
+const keys = ["name", "age", "country", "Position"];
+const values = ["Alice", 25, "USA"];
+
+let obj = {};
+for (let i = 0; i < keys.length; i++) {
+  obj[keys[i]] = values[i];
+}
+
+console.log(obj);
+
+```
+
+# Question 11
+
+Group by age
+
+```
+const people = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 30 },
+  { name: "Charlie", age: 25 },
+  { name: "David", age: 30 },
+];
+
+const groupByAge = (people) => {
+  const group = {};
+  people.map((item) => {
+    if (!group[item.age]) {
+      group[item.age] = [];
+    }
+    group[item.age].push(item);
+  });
+  return group;
+};
+
+console.log(groupByAge(people));
+
+
+```
