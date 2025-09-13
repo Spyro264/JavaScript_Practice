@@ -484,3 +484,269 @@ console.log(groupByAge(people));
 
 
 ```
+
+# Question 12
+
+-Function to create a obj dynamically
+
+```
+const key = ["name", "address", "age"];
+const value = ["nagaraj", "koppal", 20];
+
+const createObject = (key, value, objName) => {
+  const result = {};
+  key.map((item, index) => {
+    result[item] = value[index];
+  });
+
+  return { [objName]: result };
+};
+
+const obj = createObject(key, value, "person");
+const obj1 = createObject(key, value, "student");
+console.log(obj);
+console.log(obj1);
+
+
+```
+
+# Question 13
+
+-Write code to check if the property email exists in the object without throwing an error.
+
+## APPROACH 1
+
+```
+const user = {
+  name: "Alice",
+  age: 25,
+  city: "Bangalore",
+};
+
+const findProperty = (obj, propName) => {
+  return Object.keys(obj).includes(propName);
+};
+
+const result = findProperty(user, "age");
+console.log(result);
+
+```
+
+## APPROACH 2
+
+```
+const findProperty = (obj, propName) => propName in obj;
+
+```
+
+## APPROACH 3
+
+```
+const findProperty = (obj, propName) => obj.hasOwnProperty(propName);
+
+```
+
+# Question 14
+
+```
+const scores = {
+  math: 90,
+  english: 85,
+  science: 92,
+};
+
+const sumOfValues = (obj) => {
+  return Object.values(obj).reduce((acc, curr) => {
+    let res = acc + curr;
+    return res;
+  });
+};
+
+const result = sumOfValues(scores);
+console.log({ result });
+
+
+```
+
+# Question 15
+
+-Convert it into an array of key-value pairs (like [["firstName", "John"], ...]).
+
+```
+const scores = {
+  math: 90,
+  english: 85,
+  science: 92,
+};
+
+const hi = Object.entries(scores);
+console.log(hi);
+
+```
+
+# Question 16
+
+-Write a function getMarks(obj, subject) that returns the mark for a given subject dynamically.
+
+```
+const student = {
+  name: "Ravi",
+  marks: {
+    math: 95,
+    science: 88,
+    english: 92,
+  },
+};
+
+const getMarks = (student, sub) => {
+  const { marks } = student || {};
+  return marks[sub];
+};
+const res = getMarks(student, "math");
+console.log(res);
+
+```
+
+# Question 17
+
+- Flatten the obj
+
+```
+const user = {
+  name: "Alice",
+  address: {
+    city: "Bangalore",
+    pincode: {
+      main: 560001,
+      extra: 560002,
+    },
+  },
+};
+
+const flattenObject = (obj, parentKey = "", result = {}) => {
+  Object.entries(obj).forEach(([key, value]) => {
+    const newKey = parentKey ? `${parentKey}.${key}` : key;
+
+    if (typeof value === "object" && value !== null) {
+      flattenObject(value, newKey, result);
+    } else {
+      result[newKey] = value;
+    }
+  });
+  return result;
+};
+
+const result = flattenObject(user);
+console.log(result);
+
+
+```
+
+# Question 18
+
+- Deep Equality Check
+
+```
+const a = { x: 1, y: { z: 2 } };
+const b = { x: 1, y: { z: 2 }, d: 9 };
+
+const isDeepEqual = (obj1, obj2) => {
+  if (obj1 === obj2) return true;
+
+  if (obj1 === null || obj2 === null) return false;
+  if (typeof obj1 !== "object" || typeof obj2 !== "object") return false;
+
+  const firstObjKeys = Object.keys(obj1);
+  const secondObjKeys = Object.keys(obj2);
+  if (firstObjKeys.length !== secondObjKeys.length) return false;
+
+  for (const key of firstObjKeys) {
+    if (!obj2.hasOwnProperty(key)) {
+      return false;
+    }
+
+    const val1 = obj1[key];
+    const val2 = obj2[key];
+
+    if (typeof val1 === "object" && val1 !== null) {
+      if (!isDeepEqual(val1, val2)) return false;
+    } else {
+      if (val1 !== val2) {
+        return false;
+      }
+    }
+  }
+
+  return true;
+};
+
+const res = isDeepEqual(a, b);
+console.log(res);
+
+
+```
+
+# Question 19
+
+-Write a function to group students by grade:
+
+```
+const students = [
+  { name: "Ravi", grade: "A" },
+  { name: "Anu", grade: "B" },
+  { name: "John", grade: "A" },
+  { name: "Meena", grade: "C" },
+];
+
+const groupByGrade = (students) => {
+  const group = {};
+  students.forEach((item) => {
+    if (!group[item.grade]) {
+      group[item.grade] = [];
+    }
+    group[item.grade].push(item);
+  });
+  return group;
+};
+
+const result = groupByGrade(students);
+console.log(result);
+
+
+```
+
+# Question 20
+
+- rempove falsy values
+
+```
+const obj = {
+  name: "Raj",
+  age: 0,
+  email: "",
+  active: false,
+  city: "Koppal",
+};
+
+const removeFAlsyValues = (obj) => {
+  const res = {};
+  Object.entries(obj).forEach(([key, value]) => {
+    if (value) {
+      res[key] = value;
+    }
+  });
+  return res;
+};
+
+const result = removeFAlsyValues(obj);
+console.log(result);
+
+```
+
+# Question 21
+
+- Dynamic obj builder
+
+```
+
+```
