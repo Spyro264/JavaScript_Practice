@@ -748,5 +748,82 @@ console.log(result);
 - Dynamic obj builder
 
 ```
+const keys = ["id", "name", "age"];
+const values = [1, "Ravi", 22];
+
+const dynamicObjBuilder = (keys, values) => {
+  const obj = {};
+  keys.forEach((item, index) => {
+    obj[item] = values[index];
+  });
+  return obj;
+};
+
+const result = dynamicObjBuilder(keys, values);
+console.log(result);
+
+
+```
+
+# Question 22
+
+Write a function countKeys(obj) that counts all keys in a nested object, no matter how deep.
+
+```
+const obj = {
+  a: 1,
+  b: { c: 2, d: { e: 3 } },
+};
+
+let count = 0;
+const getAllKeys = (obj) => {
+  if (typeof obj !== "object") return console.log("not an obj");
+
+  Object.entries(obj).forEach(([key]) => {
+    if (typeof obj[key] === "object") {
+      count++;
+      getAllKeys(obj[key]);
+    } else {
+      count++;
+    }
+  });
+  return count;
+};
+
+const result = getAllKeys(obj);
+console.log(result);
+
+
+```
+
+# Question 23
+
+-Write a function deepMerge(obj1, obj2) that merges two objects recursively.
+
+```
+const obj1 = { a: 1, b: { x: 1 } };
+const obj2 = { b: { y: 2 }, c: 3 };
+
+const deepMerge = (obj1, obj2) => {
+  const newObj = { ...obj1 }; // start with obj1’s keys
+
+  Object.entries(obj2).forEach(([key, value]) => {
+    if (
+      typeof value === "object" &&
+      value !== null &&
+      typeof newObj[key] === "object" &&
+      newObj[key] !== null
+    ) {
+      newObj[key] = deepMerge(newObj[key], value);
+    } else {
+      newObj[key] = value;
+    }
+  });
+
+  return newObj;
+};
+const result = deepMerge(obj1, obj2);
+console.log(result);
+
 
 ```

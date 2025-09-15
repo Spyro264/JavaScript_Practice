@@ -1,6 +1,16 @@
-const keys = ["id", "name", "age"];
-const values = [1, "Ravi", 22];
+const obj = { a: 1, b: 2, c: 1, a: 3 };
 
-const dynamicObjBuilder = (keys, values) => {};
+const invertObject = (obj) => {
+  const newObj = {};
+  Object.entries(obj).forEach(([key, value]) => {
+    if (!newObj[key]) {
+      newObj[key] = value;
+    } else {
+      newObj[key] = value;
+    }
+  });
+  return newObj;
+};
 
-const result = dynamicObjBuilder(keys, values);
+const res = invertObject(obj);
+console.log(res);
