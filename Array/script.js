@@ -1,20 +1,16 @@
-const arr = ["apple", "banana", "cherry"];
+const items = ["car", "car", "bike", "bike", "plane", "plane"];
 
-const reverseArray = (arr) => {
-  const result = [];
-  for (let i = 0; i < arr.length; i++) {
-    let reversed = "";
-    const res = arr[i];
-    const upperLetter = res[0].toUpperCase() + res.slice(1);
-
-    for (let j = upperLetter.length - 1; j >= 0; j--) {
-      reversed = reversed + upperLetter[j];
+const countItems = (items) => {
+  const res = {};
+  items.forEach((item) => {
+    if (!res[item]) {
+      res[item] = 1;
+    } else {
+      res[item] = res[item] + 1;
     }
-
-    result.push(reversed);
-  }
-  return result;
+  });
+  return res;
 };
 
-const result = reverseArray(arr);
-console.log(result);
+const res = countItems(items);
+console.log(res);

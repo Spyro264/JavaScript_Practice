@@ -276,4 +276,242 @@ console.log(res);
 
 ```
 
+const arr = ["apple", "banana", "cherry"];
+
+const reverseArray = (arr) => {
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    let reversed = "";
+    const res = arr[i];
+    const upperLetter = res[0].toUpperCase() + res.slice(1);
+
+    for (let j = upperLetter.length - 1; j >= 0; j--) {
+      reversed = reversed + upperLetter[j];
+    }
+
+    result.push(reversed);
+  }
+  return result;
+};
+
+const result = reverseArray(arr);
+console.log(result);
+
+
+```
+
+# Question 10
+
+-Take an array of numbers.
+👉 Return a new array where:
+All numbers are doubled
+Only keep numbers greater than 10
+
+```
+const doubleAndReturn = (arr) => {
+  const filteredArray = arr.map((item) => {
+    const doubled = item * 2;
+    return doubled;
+  });
+
+  return filteredArray.filter((item) => item > 10);
+};
+
+const result = doubleAndReturn(arr);
+console.log(result);
+
+
+```
+
+# Question 11
+
+- Given a nested array, flatten it one level only, and then return a new array with each value squared.
+
+# Question 12
+
+- CamelCAse
+
+```
+const testCase1 = "delay charges hi";
+
+const camelCase = (testCase1) => {
+  let finalResult = "";
+  const splittedWords = testCase1.split(" ");
+
+  for (let i = 0; i < splittedWords.length; i++) {
+    const words = splittedWords[i];
+    const result =
+      i > 0 ? words[0].toUpperCase() + words.slice(1) : splittedWords[i];
+
+    finalResult = finalResult + result;
+  }
+  return finalResult;
+};
+
+const result = camelCase(testCase1);
+console.log(result);
+
+
+```
+
+# Question 13
+
+- pascal Case
+
+```
+
+const testCase1 = "delay charges hi";
+
+
+const pascalCase = (testCase1) => {
+let finalResult = "";
+const splittedWords = testCase1.split(" ");
+
+for (let i = 0; i < splittedWords.length; i++) {
+const words = splittedWords[i];
+const result = words[0].toUpperCase() + words.slice(1);
+
+    finalResult = finalResult + result;
+
+}
+return finalResult;
+};
+
+const result = pascalCase(testCase1);
+console.log(result);
+
+```
+
+# Question 14
+
+- kebab-case
+
+```
+const testCase1 = "delay charges hi";
+
+const kebabCase = (testCase1) => {
+  const str = testCase1.toLowerCase();
+
+  return str.split(" ").join("-");
+};
+
+const result = kebabCase(testCase1);
+console.log(result);
+
+
+```
+
+# Question 15
+
+- sake_case
+
+```
+const testCase1 = "delay charges hi hello there spyro";
+
+const snakeCase = (testCase1) => {
+  const str = testCase1.toLowerCase();
+
+  return str.split(" ").join("-");
+};
+
+const result = snakeCase(testCase1);
+console.log(result);
+```
+
+# Question 16
+
+- grpupBY
+
+```
+
+const employeeList = [
+  { id: 1, name: "Arun", departmant: "Software" },
+  { id: 2, name: "Pavani", departmant: "HR" },
+  { id: 3, name: "Rutuja", departmant: "HR" },
+  { id: 4, name: "Ammar", departmant: "Software" },
+  { id: 5, name: "Meghna", departmant: "Marketing" },
+  { id: 6, name: "Nagraj", departmant: "Software" },
+];
+
+const groupBy = (emp) => {
+  const list = {};
+  const res = emp.forEach((item) => {
+    if (!list[item.departmant]) {
+      list[item.departmant] = item;
+    } else {
+      list[item.departmant] = item;
+    }
+  });
+  return list;
+};
+
+const result = groupBy(employeeList);
+console.log(result);
+
+```
+
+# Question 17
+
+-fibonacci
+
+```
+
+const fibonacci = (n) => {
+  let result = [0, 1];
+  for (let i = 2; i < n; i++) {
+    result[i] = result[i - 1] + result[i - 2];
+  }
+  const res = result.toString();
+
+  return res;
+};
+
+const res = fibonacci(n);
+console.log(res);
+```
+
+```
+const fibonacci = (n) => {
+  let num1 = 0;
+  let num2 = 1;
+
+  for (let i = 0; i < n; i++) {
+    console.log(num1);
+
+    let temp;
+    temp = num1;
+    num1 = num2;
+    num2 = num1 + temp;
+  }
+};
+
+const res = fibonacci(5);
+console.log(res);
+
+
+```
+
+# Question 18
+
+- count the items
+
+```
+const items = ["car", "car", "bike", "bike", "plane", "plane"];
+
+const countItems = (items) => {
+  const res = {};
+  items.forEach((item) => {
+    if (!res[item]) {
+      res[item] = 1;
+    } else {
+      res[item] = res[item] + 1;
+    }
+  });
+  return res;
+};
+
+const res = countItems(items);
+console.log(res);
+
+
 ```
