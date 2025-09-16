@@ -100,3 +100,15 @@ for (let value of arr) {
 
 - Array method that transforms each element and returns a new array.
 - Best for creating a new transformed array.
+- ❌ Doesn’t break early.
+-
+
+```
+const nums = [1, 2, 3, 4];
+const result = nums.map((item) => {
+  return item;
+});
+console.log(result);
+
+
+```
