@@ -1,16 +1,26 @@
-const items = ["car", "car", "bike", "bike", "plane", "plane"];
+const arr = "ab3c2h";
 
-const countItems = (items) => {
-  const res = {};
-  items.forEach((item) => {
-    if (!res[item]) {
-      res[item] = 1;
-    } else {
-      res[item] = res[item] + 1;
+const expandStringNumbers = (str) => {
+  let newStr = "";
+  let currentChar = "";
+
+  for (let char of str) {
+    if (/[a-zA-Z]/.test(char)) {
+      if (currentChar) {
+        newStr = newStr + currentChar;
+      }
+      currentChar = char;
+    } else if (/\d/.test(char)) {
+      newStr += currentChar.repeat(Number(char));
     }
-  });
-  return res;
+  }
+
+  if (currentChar) {
+    newStr = newStr + currentChar;
+  }
+
+  return newStr;
 };
 
-const res = countItems(items);
+const res = expandStringNumbers(arr);
 console.log(res);

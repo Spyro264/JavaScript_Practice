@@ -515,3 +515,225 @@ console.log(res);
 
 
 ```
+
+# Question 19
+
+-sum of array
+
+```
+
+```
+
+# Question 20
+
+- revers num
+
+```
+const num = 345;
+
+const reverseInteger = (num) => {
+  let n = num;
+  let result = 0;
+  while (n > 0) {
+    const digit = n % 10;
+    result = result * 10 + digit;
+    n = Math.floor(n / 10);
+  }
+  return result;
+};
+
+const res = reverseInteger(num);
+console.log(res);
+
+```
+
+# Question 21
+
+- prime num
+
+```
+
+```
+
+# Question 22
+
+- group by length
+
+```
+
+const arr = ["hi", "sun", "cat", "apple", "dog", "banana"];
+
+const groupByLength = (arr) => {
+  const obj = {};
+
+  arr.forEach((item) => {
+    if (!obj[item.length]) {
+      obj[item.length] = [];
+    }
+    obj[item.length].push(item);
+  });
+  return obj;
+};
+
+const res = groupByLength(arr);
+console.log(res);
+
+```
+
+# Question 23
+
+- foo-bar
+
+```
+const num = 15;
+
+const findFooBar = (num) => {
+  for (let i = 1; i <= num; i++) {
+    if (i % 5 === 0 && i % 3 === 0) {
+      console.log("foo-bar");
+    } else if (i % 5 === 0) {
+      console.log("bar");
+    } else if (i % 3 === 0) {
+      console.log("foo");
+    } else {
+      console.log(i);
+    }
+  }
+};
+
+const res = findFooBar(num);
+
+```
+
+# Question 24
+
+- breaup Question
+
+```
+const str = "abcdefghijklmnopqrstuvwxyz";
+
+const divideandrule = (str, breakup) => {
+  if (breakup === 0 || !breakup) return;
+  if (typeof str !== "string") return;
+
+  let hey = str;
+
+  while (hey.length > 0) {
+    console.log(hey.slice(0, breakup));
+    hey = hey.slice(breakup);
+  }
+};
+
+const res = divideandrule(str, 4);
+
+```
+
+# Question 25
+
+- Zig Zag Merge
+
+```
+const arr1 = [1, 2, 3, 4, 5];
+const arr2 = ["a", "b", "c", "d"];
+
+const zigZagMerge = (arr1, arr2) => {
+  let newArr = [];
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== undefined) newArr.push(arr1[i]);
+    if (arr2[i] !== undefined) newArr.push(arr2[i]);
+  }
+  return newArr;
+};
+
+const res = zigZagMerge(arr1, arr2);
+console.log(res);
+
+
+```
+
+# Question 26
+
+- Number masking
+
+```
+const str = "1234567890123456";
+
+const numberMasking = (str, breakup) => {
+  const visibleNumber = str.slice(-breakup);
+  let res = "";
+  const maskedNumber = str.length - visibleNumber.length;
+
+  for (let i = 0; i < maskedNumber; i++) {
+    res = res + "*";
+  }
+  return res + visibleNumber;
+};
+
+const res = numberMasking(str, 8);
+console.log(res);
+
+
+
+```
+
+# Question 27
+
+- Input: "a3b2c"
+  Output: "aaabbc"
+
+```
+const arr = "a3b2c6";
+
+const expandStringNumbers = (arr) => {
+  let str = arr;
+  let newStr = "";
+  while (str.length > 0) {
+    const words = str.slice(0, 2);
+    if (words.length === 2) {
+      newStr = newStr + words[0].repeat(Number(words[1]));
+    } else {
+      newStr = newStr + words[0];
+    }
+
+    str = str.slice(2);
+  }
+  return newStr;
+};
+
+const res = expandStringNumbers(arr);
+console.log(res);
+
+
+```
+
+```
+const arr = "xyz";
+
+const expandStringNumbers = (str) => {
+  let newStr = "";
+  let currentChar = "";
+
+  for (let char of str) {
+    if (/[a-zA-Z]/.test(char)) {
+      if (currentChar) {
+        newStr = newStr + currentChar;
+      }
+      currentChar = char;
+    } else if (/\d/.test(char)) {
+      newStr += currentChar.repeat(Number(char));
+    } else {
+      newStr = newStr + char;
+    }
+  }
+
+  if (currentChar) {
+    newStr = newStr + currentChar;
+  }
+
+  return newStr;
+};
+
+const res = expandStringNumbers(arr);
+console.log(res);
+
+```
