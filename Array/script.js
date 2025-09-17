@@ -1,26 +1,18 @@
-const arr = "ab3c2h";
+const nums = [1, 1, 2, 2, 3, 4, 5, 4];
 
-const expandStringNumbers = (str) => {
-  let newStr = "";
-  let currentChar = "";
+var removeDuplicates = function (nums) {
+  if (nums.length === 0) return 0;
 
-  for (let char of str) {
-    if (/[a-zA-Z]/.test(char)) {
-      if (currentChar) {
-        newStr = newStr + currentChar;
-      }
-      currentChar = char;
-    } else if (/\d/.test(char)) {
-      newStr += currentChar.repeat(Number(char));
+  let k = 0; // pointer for unique position
+
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] !== nums[k]) {
+      k++;
+      nums[k] = nums[i]; // overwrite in place
     }
   }
 
-  if (currentChar) {
-    newStr = newStr + currentChar;
-  }
-
-  return newStr;
+  return k + 1; // number of unique elements
 };
 
-const res = expandStringNumbers(arr);
-console.log(res);
+console.log(removeDuplicates(nums));
