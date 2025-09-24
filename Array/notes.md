@@ -759,3 +759,52 @@ const twoSum = (nums, target) => {
 const res = twoSum(arr, target);
 console.log(res);
 ```
+
+# Question 29
+
+- Rotate Array
+
+```
+const arr = [1, 2, 3, 4, 5];
+const steps = 2;
+
+const rotateArray = (arr, steps) => {
+  let newArr = [];
+  const targetedElements = arr.slice(-steps);
+  newArr.push(...targetedElements);
+
+  for (let i = 0; i < arr.length - steps; i++) {
+    newArr.push(arr[i]);
+  }
+  return newArr;
+};
+
+const res = rotateArray(arr, steps);
+console.log(res);
+
+```
+
+# Question 30
+
+- Missing Number
+
+```
+const arr = [1, 2, 3, 4, 7];
+
+const missingNumber = (arr) => {
+  let missedNum = arr[0];
+  for (let i = 0; i < arr.length; i++) {
+    missedNum = missedNum + 1;
+
+    if (!arr.includes(missedNum)) {
+      missedNum = missedNum;
+      return missedNum;
+    }
+  }
+};
+
+const res = missingNumber(arr);
+console.log(res);
+
+
+```
