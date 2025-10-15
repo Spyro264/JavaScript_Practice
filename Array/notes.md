@@ -743,21 +743,24 @@ console.log(res);
 - Two Sum
 
 ```
+const arr = [1, 2, 3, 4, 5, 6];
+let target = 9;
 
-const arr = [2, 5, 5, 11];
-const target = 10;
-
-const twoSum = (nums, target) => {
-  for (let i = 0; i < nums.length; i++) {
-    for (let j = i + 1; j < nums.length; j++) {
-      if (nums[i] + nums[j] === target) return [i, j];
+const findTargetIndex = (arr, target) => {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === target) {
+        newArr.push([i, j]);
+      }
     }
   }
-  return [];
+  return newArr;
 };
 
-const res = twoSum(arr, target);
+const res = findTargetIndex(arr, target);
 console.log(res);
+
 ```
 
 # Question 29
@@ -804,6 +807,33 @@ const missingNumber = (arr) => {
 };
 
 const res = missingNumber(arr);
+console.log(res);
+
+
+```
+
+# Question 31
+
+- isSame
+
+```
+const str1 = "dog";
+const str2 = "bod";
+
+const isSame = (str1, str2) => {
+  if (str1.length !== str2.length) return "str not equal";
+
+  const sortedStr1 = str1.split("").sort();
+  const sortedStr2 = str2.split("").sort();
+  for (let i = 0; i < sortedStr1.length; i++) {
+    if (sortedStr1[i] !== sortedStr2[i]) {
+      return false;
+    }
+  }
+  return true;
+};
+
+const res = isSame(str1, str2);
 console.log(res);
 
 
