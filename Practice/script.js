@@ -28,58 +28,19 @@
 // console.log("" == false); // true
 // console.log(" " == false); // true
 
-// function delayPrint(msg, delay) {
-//   setTimeout(() => {
-//     console.log({ msg });
-//   }, delay);
-// }
+const reverseString = (str) => {
+  if (typeof str !== "string") {
+    throw new Error("Invalid input, please provide a string");
+  }
 
-// delayPrint("hi", 10);
-// delayPrint("helo", 0);
+  let res = "";
 
-const fetchUserData = () => {
-  return new Promise((resolve, rej) => {
-    fetch("userdata")
-      .then((res) => {
-        resolve("userData");
-      })
-      .catch((error) => {
-        rej(error);
-      });
-  });
+  for (let i = str.length - 1; i >= 0; i--) {
+    res += str[i];
+  }
+  return res;
 };
-
-const fetchAccountStatus = (data) => {
-  return new Promise((resolve, rej) => {
-    fetch("accountStatus")
-      .then((res) => {
-        resolve("inactive");
-      })
-      .catch((error) => {
-        rej(error);
-      });
-  });
-};
-
-fetchUserData().then((res) => {
-  fetchAccountisDisabled().then((hey) => {
-    fetchAccountStatus().then((hig) => {
-      console.log("hhello");
-    });
-  });
-});
-
-fetchUserData()
-  .then((res) => {
-    return fetchAccountStatus(res);
-  })
-  .then((statuss) => {
-    if (statuss === "active") {
-      console.log("fetch user activity");
-    } else {
-      console.log("cant procceed");
-    }
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+console.log(reverseString(908));
+console.log(reverseString("nagaraj"));
+console.log(reverseString("spyro"));
+console.log(reverseString("hima"));
